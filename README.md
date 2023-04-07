@@ -1,5 +1,24 @@
-# shop-admin
-shop 后台管理系统
+# shop_admin
 
-# 电商后台管理系统功能
-![](https://github.com/Bogon/blog_images/blob/main/shop_admin/arch.png?raw=true)
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
