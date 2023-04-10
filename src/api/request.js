@@ -9,6 +9,7 @@ const request = axios.create({
 // interceptors axios的拦截器对象
 request.interceptors.request.use(config => {
   // config 请求的所有信息 包含 header
+  config.headers.Authorization = window.sessionStorage.getItem('token')
   return config // 将配置完成的config对象返回出去 如果不返回 请求讲不会进行
 }, err => {
   // 请求发生错误时的相关处理 抛出错误
