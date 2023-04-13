@@ -50,7 +50,8 @@
               <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteUser(scope.row.id)"></el-button>
               <!--              分配角色按钮-->
               <el-tooltip effect="dark" content="分配角色" placement="top" :enterable="false">
-                <el-button type="warning" icon="el-icon-setting" size="mini"></el-button>
+                <el-button type="warning" icon="el-icon-setting" size="mini"
+                           @click="showAllotRoleDislog(scope.row)"></el-button>
               </el-tooltip>
             </template>
           </el-table-column>
@@ -136,9 +137,35 @@
           </span>
         </el-dialog>
 
+        <!--        赋予角色-->
+        <el-dialog
+                title="分配角色"
+                :visible.sync="editRoleDialogVisible"
+                width="50%" @close="editRoleDialogClose">
+
+          <div>
+            <p>当前用户：{{ editRightInfo.username }}</p>
+            <p>当前用户角色：{{ editRightInfo.role_name }}</p>
+            <span>分配新角色：</span>
+            <el-select v-model="selectedRoleId" placeholder="请选择角色">
+              <el-option
+                      v-for="item in rolesList"
+                      :key="item.id"
+                      :label="item.roleName"
+                      :value="item.id">
+              </el-option>
+            </el-select>
+          </div>
+
+
+          <span slot="footer">
+            <el-button @click="editRoleDialogClose">取 消</el-button>
+            <el-button type="primary" @click="commitEditRoleInfo">确 定</el-button>
+          </span>
+        </el-dialog>
+
       </div>
     </el-card>
-
 
   </div>
 </template>
@@ -151,6 +178,8 @@ import {
   queryUser,
   editUser,
   deleteUser,
+  getRoles,
+  allotUserRole,
 } from "@/api";
 
 export default {
@@ -214,7 +243,11 @@ export default {
           {required: true, message: '请输入邮箱地址', trigger: 'blur'},
           {pattern: /^1[3456789]\d{9}$/, message: '手机号码格式不正确', trigger: 'blur'}
         ]
-      }
+      },
+      editRoleDialogVisible: false,
+      editRightInfo: {},
+      rolesList: [],
+      selectedRoleId: ''
     }
   },
 
@@ -348,6 +381,32 @@ export default {
       if (result.meta.status != 200) return this.$message.error(this.meta.msg)
       await this.getUsersList()
       this.$message({type: 'success', message: '删除成功!'});
+    },
+
+    // 给用户赋予角色
+    async showAllotRoleDislog(userInfo) {
+      this.editRightInfo = userInfo
+      const result = await getRoles()
+      if (result.meta.status != 200 ) return this.$message.error(result.meta.msg)
+      this.rolesList = result.data
+
+      this.editRoleDialogVisible = true
+
+    },
+
+    editRoleDialogClose() {
+      this.editRoleDialogVisible = false
+    },
+
+    async commitEditRoleInfo() {
+      if (!this.selectedRoleId) {
+        return this.$message.error('请选择一个用户角色')
+      }
+      const result = await allotUserRole(this.editRightInfo.id, this.selectedRoleId)
+      if (result.meta.status !=200) return this.$message.error(result.meta.msg)
+      this.$message.success(result.meta.msg)
+      await this.getUsersList()
+      this.editRoleDialogClose()
     }
 
   }

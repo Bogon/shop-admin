@@ -4,6 +4,8 @@ import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Welcome from "@/components/Welcome"
 import Users from '@/components/user/Users'
+import Rights from '@/components/power/Rights'
+import Roles from '@/components/power/Roles'
 
 
 import '@/assets/css/global.css'
@@ -16,7 +18,7 @@ const routes = [
   {
     path: '/home',
     component: Home,
-    redirect:'/welcome',
+    redirect: '/welcome',
     children: [
       {
         path: '/welcome',
@@ -25,6 +27,14 @@ const routes = [
       {
         path: '/users',
         component: Users,
+      },
+      {
+        path: '/rights',
+        component: Rights,
+      },
+      {
+        path: '/roles',
+        component: Roles,
       },
     ]
   }
