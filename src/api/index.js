@@ -39,10 +39,23 @@ export const addRole = (params) => request.post('/roles', params)
 // 查询 role 信息
 export const getRole = (roleId) => request.get(`/roles/${roleId}`)
 // 修改角色
-export  const editRoleApi = (params) => request.put(`/roles/${params.roleId}`, {roleName: params.roleName, roleDesc: params.roleDesc})
+export const editRoleApi = (params) => request.put(`/roles/${params.roleId}`, {
+  roleName: params.roleName,
+  roleDesc: params.roleDesc
+})
 // 删除角色
 export const deleteRole = (roleId) => request.delete(`/roles/${roleId}`)
 // 删除角色制定权限
 export const deleteRoleRight = (roleId, rightId) => request.delete(`/roles/${roleId}/rights/${rightId}`)
 // 给角色赋予权限
-export const setRoleRight= (params) => request.post(`/roles/${params.roleId}/rights`, {rids: params.rids})
+export const setRoleRight = (params) => request.post(`/roles/${params.roleId}/rights`, {rids: params.rids})
+
+
+// 获取商品分类
+export const getCategories = (params) => request.get('/categories', {params})
+// 删除分类
+export const deleteCategory = (categoryId) => request.delete(`/categories/${categoryId}`)
+// 添加分类
+export const addCategory = (params) => request.post('/categories', params)
+//修改分类
+export const editCategory = (cateId, cat_name) => request.put(`/categories/${cateId}`, {cat_name: cat_name})
