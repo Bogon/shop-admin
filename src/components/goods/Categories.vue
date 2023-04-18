@@ -184,7 +184,7 @@ export default {
           {min: 3, max: 20, message: '至少3个字符，至多20个字符', trigger: 'blur'}
         ],
       },
-      parentCateList: [],
+      cateListparentCateList: [],
       propcascaderProps: {
         expandTrigger: 'hover',
         label: 'cat_name',
