@@ -37,7 +37,7 @@
           </el-table-column>
           <el-table-column align="center" label="操作">
             <template v-slot:default="scope">
-              <el-button type="primary" icon="el-icon-edit" size="mini"></el-button>
+              <el-button type="primary" icon="el-icon-edit" size="mini" @click="goEditPage(scope.row)"></el-button>
               <el-button type="danger" icon="el-icon-delete" size="mini"
                          @click="deleteGoodsById(scope.row)"></el-button>
             </template>
@@ -72,6 +72,7 @@ import {
   getGoodsList,
   deleteGoods,
 } from "@/api";
+
 
 export default {
   name: "Goods",
@@ -142,6 +143,10 @@ export default {
     // 添加商品
     goAddPage() {
       this.$router.push('/goods/add')
+    },
+
+    goEditPage(row) {
+      this.$router.push({path: `/goods/edit/${row.goods_id}`})
     },
 
 

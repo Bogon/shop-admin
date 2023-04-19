@@ -10,6 +10,7 @@ import Categories from "@/components/goods/Categories"
 import Params from "@/components/goods/Params"
 import Goods from "@/components/goods/Goods"
 import Add from "@/components/goods/Add"
+import Edit from "@/components/goods/Edit";
 
 import '@/assets/css/global.css'
 
@@ -54,6 +55,11 @@ const routes = [
       {
         path:'/goods/add',
         component: Add,
+      },
+      {
+        path:'/goods/edit/:goodsId',
+        component: Edit,
+        name: 'Edit'
       },
     ]
   }

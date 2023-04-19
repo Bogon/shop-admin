@@ -77,3 +77,7 @@ export const getGoodsList = (params) => request.get('/goods', {params})
 export const deleteGoods = (goodsId) => request.delete(`goods/${goodsId}`)
 // 添加商品
 export const addGoods = (params) => request.post(`/goods`, params)
+// 获取商品信息
+export const getGoods = (goodsId) => request.get(`/goods/${goodsId}`)
+//编辑商品
+export const editGoods = (goodsId, params) => request.put(`/goods/${goodsId}`, params)
