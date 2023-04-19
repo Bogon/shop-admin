@@ -350,7 +350,7 @@ export default {
 
     showInput(attr) {
       attr.isInputVisible = true
-      this.$nextTick(_ => {
+      this.$nextTick(() => {
         this.$refs.saveTagInput.$refs.input.focus();
       });
     },

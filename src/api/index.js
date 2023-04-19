@@ -69,3 +69,11 @@ export const editAttributes = (catId,paras) => request.post(`categories/${catId}
 export  const deleteAttributes = (paras) => request.delete(`categories/${paras.cat_id}/attributes/${paras.attr_id}`)
 // 修改属性
 export const updateAttributes = (cateId, attrId, paras) => request.put(`categories/${cateId}/attributes/${attrId}`, {attr_sel: paras.attr_sel, attr_name: paras.attr_name, attr_vals: paras.attr_vals})
+
+
+// 获取商品列表
+export const getGoodsList = (params) => request.get('/goods', {params})
+// 删除商品
+export const deleteGoods = (goodsId) => request.delete(`goods/${goodsId}`)
+// 添加商品
+export const addGoods = (params) => request.post(`/goods`, params)

@@ -32,3 +32,8 @@ html, body, #app {
 .bdbottom {
 	border-bottom: 1px solid #eee;
 }
+
+.quill-editor {
+	height: 250px;
+	margin-bottom: 15px;
+}
