@@ -81,3 +81,9 @@ export const addGoods = (params) => request.post(`/goods`, params)
 export const getGoods = (goodsId) => request.get(`/goods/${goodsId}`)
 //编辑商品
 export const editGoods = (goodsId, params) => request.put(`/goods/${goodsId}`, params)
+
+
+//获取订单列表
+export const getOrders = (params) => request.get(`/orders`, {params})
+//查看物流信息
+export const processInfo = (id) => request.get(`/kuaidi/${id}`)

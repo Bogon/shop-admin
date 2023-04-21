@@ -11,6 +11,7 @@ import Params from "@/components/goods/Params"
 import Goods from "@/components/goods/Goods"
 import Add from "@/components/goods/Add"
 import Edit from "@/components/goods/Edit";
+import Order from "@/components/order/Order";
 
 import '@/assets/css/global.css'
 
@@ -60,6 +61,10 @@ const routes = [
         path:'/goods/edit/:goodsId',
         component: Edit,
         name: 'Edit'
+      },
+      {
+        path:'/orders',
+        component: Order,
       },
     ]
   }
