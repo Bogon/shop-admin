@@ -62,13 +62,17 @@ export const editCategory = (cateId, cat_name) => request.put(`/categories/${cat
 
 
 // 获取参数列表
-export const getAttributes = (paras) => request.get(`/categories/${paras.cateId}/attributes`, {params:{sel: paras.sel}})
+export const getAttributes = (paras) => request.get(`/categories/${paras.cateId}/attributes`, {params: {sel: paras.sel}})
 // 添加属性
-export const editAttributes = (catId,paras) => request.post(`categories/${catId}/attributes`, paras)
+export const editAttributes = (catId, paras) => request.post(`categories/${catId}/attributes`, paras)
 // 删除属性
-export  const deleteAttributes = (paras) => request.delete(`categories/${paras.cat_id}/attributes/${paras.attr_id}`)
+export const deleteAttributes = (paras) => request.delete(`categories/${paras.cat_id}/attributes/${paras.attr_id}`)
 // 修改属性
-export const updateAttributes = (cateId, attrId, paras) => request.put(`categories/${cateId}/attributes/${attrId}`, {attr_sel: paras.attr_sel, attr_name: paras.attr_name, attr_vals: paras.attr_vals})
+export const updateAttributes = (cateId, attrId, paras) => request.put(`categories/${cateId}/attributes/${attrId}`, {
+  attr_sel: paras.attr_sel,
+  attr_name: paras.attr_name,
+  attr_vals: paras.attr_vals
+})
 
 
 // 获取商品列表
@@ -87,3 +91,6 @@ export const editGoods = (goodsId, params) => request.put(`/goods/${goodsId}`, p
 export const getOrders = (params) => request.get(`/orders`, {params})
 //查看物流信息
 export const processInfo = (id) => request.get(`/kuaidi/${id}`)
+
+//获取折线图数据
+export const getRepost = () => request.get(`reports/type/1`)
