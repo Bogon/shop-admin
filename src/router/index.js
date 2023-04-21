@@ -12,6 +12,7 @@ import Goods from "@/components/goods/Goods"
 import Add from "@/components/goods/Add"
 import Edit from "@/components/goods/Edit";
 import Order from "@/components/order/Order";
+import Report from "@/components/report/Report";
 
 import '@/assets/css/global.css'
 
@@ -65,6 +66,10 @@ const routes = [
       {
         path:'/orders',
         component: Order,
+      },
+      {
+        path:'/reports',
+        component: Report,
       },
     ]
   }
