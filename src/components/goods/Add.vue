@@ -230,7 +230,6 @@ export default {
           return
         }
         this.onlyTabData = result.data
-        console.log(result)
       }
 
     },
@@ -239,12 +238,10 @@ export default {
       const filePath = file.response.data.tmp_path
       const index = this.addForm.pics.findIndex(x => x.pic === filePath)
       this.addForm.pics.splice(index, 1)
-      console.log(this.addForm.pics)
 
     },
 
     handlePreview(file) {
-      console.log(file);
       this.priviewPath = file.response.data.url
       this.previewDialogVisible = true
     },
@@ -260,7 +257,6 @@ export default {
     },
 
     add() {
-      console.log(this.addForm)
       this.$refs.addRuleFormRef.validate(async (valid) => {
         if (!valid) {
           return this.$message.error("输入信息有误，请检查后重试")

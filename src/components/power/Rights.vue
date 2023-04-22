@@ -65,7 +65,6 @@ export default {
     //   获取权限列表 list
     async getRights() {
       const result = await getRights('list')
-      console.log(result)
       if (result.meta.status != 200) {
         return this.$message.error(result.meta.msg)
       }

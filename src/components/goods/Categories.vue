@@ -211,7 +211,6 @@ export default {
     // 获取商品分类列表
     async getCategoryList() {
       const result = await getCategories(this.categoryInfo)
-      console.log(result)
       if (result.meta.status != 200) return this.$message.error(result.meta.msg)
       this.categoryList = result.data.result
       this.total = result.data.total
@@ -260,7 +259,6 @@ export default {
           return this.$message.error('填写数据有误，请检查无误后重试')
         }
         const result = await addCategory(this.addCategoryForm)
-        console.log(result)
 
         if (result.meta.status != 201) return this.$message.error(result.meta.msg)
         this.$message.success(result.meta.msg)
@@ -285,7 +283,6 @@ export default {
     },
 
     parentChange() {
-      console.log(this.selectCates)
       if (this.selectCates.length > 0) {
         this.addCategoryForm.cat_pid = this.selectCates[this.selectCates.length - 1]
         this.addCategoryForm.cat_level = this.selectCates.length

@@ -175,7 +175,6 @@ export default {
       const filePath = file.response.data.tmp_path
       const index = this.addForm.pics.findIndex(x => x.pic === filePath)
       this.addForm.pics.splice(index, 1)
-      console.log(this.addForm.pics)
 
     },
 
@@ -195,7 +194,6 @@ export default {
     },
 
     edit() {
-      console.log(this.addForm)
       this.$refs.addRuleFormRef.validate(async (valid) => {
         if (!valid) {
           return this.$message.error("输入信息有误，请检查后重试")
@@ -223,7 +221,6 @@ export default {
     async getGoodsInfo() {
       const result = await getGoods(this.goodsId)
       if (result.meta.status != 200) return this.$message.error(result.meta.msg)
-      console.log(result)
       this.addForm.goods_name = result.data.goods_name
       this.addForm.goods_number = result.data.goods_number
       this.addForm.goods_weight = result.data.goods_weight

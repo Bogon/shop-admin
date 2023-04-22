@@ -257,7 +257,6 @@ export default {
     async editRoleInfo(roleId) {
       this.editRoleDialogVisible = true
       //   获取信息
-      console.log(roleId)
       const roleInfo = await getRole(roleId)
       if (roleInfo.meta.status !== 200) return this.$message.error(roleInfo.meta.msg)
       this.editRole = roleInfo.data

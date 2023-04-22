@@ -37,10 +37,10 @@
             </template>
           </el-table-column>
           <el-table-column label="操作">
-            <template v-slot:default="scope">
+            <template>
               <el-button type="primary" icon="el-icon-edit" size="mini"
-                         @click="editAddressOrder(scope.row)"></el-button>
-              <el-button type="success" icon="el-icon-location" size="mini" @click="showProcess(scope.row)"></el-button>
+                         @click="editAddressOrder"></el-button>
+              <el-button type="success" icon="el-icon-location" size="mini" @click="showProcess"></el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -220,14 +220,12 @@ export default {
   methods: {
     async getOrderList() {
       const result = await getOrders(this.orderForm)
-      console.log(result)
       if (result.meta.status != 200) return this.$message.error(result.meta.msg)
       this.orderList = result.data.goods
       this.total = result.data.total
     },
 
-    editAddressOrder(row) {
-      console.log(row)
+    editAddressOrder() {
       this.editAddressDialogVisible = true
 
     },
@@ -258,9 +256,8 @@ export default {
       this.processDialogVisible = false
     },
 
-   async  showProcess(row) {
+   async  showProcess() {
       this.processDialogVisible = true
-      console.log(row)
 
       // if (row.is_send === '是') {
       //   this.editAddressDialogVisible = true
